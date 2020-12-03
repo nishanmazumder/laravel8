@@ -1,0 +1,71 @@
+/***Global***/
+.nm-btn{
+    background: #2FDAB8;
+    color: #fff;
+    border: 1px solid #2FDAB8;
+    padding: 5px 15px;
+    outline: none !important;
+    text-decoration: none;
+    transition: .5s;
+}
+
+.nm-btn:hover{
+    background: transparent;
+    color: #2FDAB8;
+}
+/***Banner***/
+.nm-cart-count{
+    background: #000000;
+    color: #2FDAB8;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 50%;
+    position: relative;
+    top: 11px;
+    left: -18px;
+}
+
+/***Cart***/
+.nm-cart-btn {
+    width: 70%;
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+
+.nm-cart-btn:hover {
+    background: transparent;
+    color: #2FDAB8;
+
+}
+
+.nm-cart-btn:focus {
+    color: #2FDAB8;
+    text-decoration: none;
+    background: transparent;
+}
+
+/* .nm-cart-btn:focus:hover{
+    color: #2FDAB8;
+} */
+
+/***Cart page***/
+.nm-btn-cart-page {
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
+}
+
+/***Tostr***/
+
+#toast-container>.toast-success {
+    background-color: #2FDAB8 !important;
+}
+
+/***Login/Register***/
+.nm-sing-in{
+    width: 50%;
+    margin: 0px auto;
+    padding-top: 50px !important;
+}

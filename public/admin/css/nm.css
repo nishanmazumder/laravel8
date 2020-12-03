@@ -1,0 +1,16 @@
+/* ckeEditor */
+.ck-editor__editable {
+    min-height: 200px;
+}
+
+/***Cart***/
+.nm-cart-btn {
+    background: transparent;
+    color: #fff;
+    border: none;
+    padding: .5em 0;
+    outline: none;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 13px;
+}
