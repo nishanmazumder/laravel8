@@ -7,16 +7,24 @@
     <div class="modal-body modal-body-sub_agile nm-sing-in">
         <div class="col-md-8 modal_body_left modal_body_left1">
             <h3 class="agileinfo_sign">Sign In <span>Now</span></h3>
-            <form action="#" method="post">
-                <div class="styled-input agile-styled-input-top">
-                    <input type="text" name="Name" required="">
-                    <label>Name</label>
-                    <span></span>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                @method('POST')
+                <div class="styled-input">
+                    <input type="email" name="email" required="" value="{{ old('email') }}" placeholder="Email">
+                    @if ($errors->has('email'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
                 </div>
                 <div class="styled-input">
-                    <input type="email" name="Email" required="">
-                    <label>Email</label>
-                    <span></span>
+                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password">
+                    @if ($errors->has('password'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
                 </div>
                 <input type="submit" value="Sign In">
             </form>
@@ -39,12 +47,12 @@
                     </a></li>
             </ul>
             <div class="clearfix"></div>
-        <p><a href="{{url('register')}}"> Don't have an account?</a>
+        <p><a href="{{route('register')}}"> Don't have an account?</a>
             </p>
 
         </div>
         <div class="col-md-4 modal_body_right modal_body_right1">
-            <img src="{{asset('public/web')}}/images/log_pic.jpg" alt=" " />
+            <img src="{{asset('/web')}}/images/log_pic.jpg" alt=" " />
         </div>
         <div class="clearfix"></div>
     </div>

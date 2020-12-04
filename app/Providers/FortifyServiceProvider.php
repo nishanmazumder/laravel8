@@ -32,5 +32,24 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+
+        // Fortify::loginView(function(){
+        //     return view('web.pages.login');
+        // });
+
+        // Fortify::registerView(function(){
+        //     return view('web.pages.register');
+        // });
+
+        // Fortify::requestPasswordResetLinkView(function(){
+        //     return view('web.pages.register');
+        // });
+
+        // Fortify::resetPasswordView(function($request){
+        //     $token = $request->route('token');
+        //     $email = $request->email;
+
+        //     return view('web.pages.reset', ['token'=>$token, 'email'=>$email]);
+        // });
     }
 }

@@ -53,7 +53,7 @@
 
         </div>
         <div class="col-md-4 modal_body_right modal_body_right1">
-            <img src="{{asset('public/web')}}/images/log_pic.jpg" alt=" " />
+            <img src="{{asset('/web')}}/images/log_pic.jpg" alt=" " />
         </div>
         <div class="clearfix"></div>
     </div>
