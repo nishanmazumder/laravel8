@@ -1,35 +1,41 @@
 @extends('web.master')
 
 @section('content')
-{{-- Register --}}
 <div class="container">
     <!-- Modal1 -->
     <div class="modal-body modal-body-sub_agile nm-sing-in">
         <div class="col-md-8 modal_body_left modal_body_left1">
             <h3 class="agileinfo_sign">Sign Up <span>Now</span></h3>
-            <form action="#" method="post">
-                <div class="styled-input agile-styled-input-top">
-                    <input type="text" name="Name" required="">
-                    <label>Name</label>
-                    <span></span>
-                </div>
-                <div class="styled-input">
-                    <input type="email" name="Email" required="">
-                    <label>Email</label>
-                    <span></span>
-                </div>
-                <div class="styled-input">
-                    <input type="password" name="password" required="">
-                    <label>Password</label>
-                    <span></span>
-                </div>
-                <div class="styled-input">
-                    <input type="password" name="Confirm Password" required="">
-                    <label>Confirm Password</label>
-                    <span></span>
-                </div>
-                <input type="submit" value="Sign Up">
-            </form>
+            {{-- Register --}}
+            {!! Form::open(['url' => 'customer/add', 'method' => 'POST']) !!}
+            <div class="styled-input agile-styled-input-top">
+                <input type="text" name="name" required>
+                <label>Name</label>
+                <span></span>
+            </div>
+            <div class="styled-input">
+                <input type="email" name="email" required>
+                <label>Email</label>
+                <span></span>
+            </div>
+            <div class="styled-input">
+                <input type="password" name="password" required>
+                <label>Password</label>
+                <span></span>
+            </div>
+            <div class="styled-input agile-styled-input-top">
+                <input type="text" name="phone" required>
+                <label>Phone</label>
+                <span></span>
+            </div>
+            <div class="styled-input agile-styled-input-top">
+                <input type="text" name="address" required>
+                <label>Address</label>
+                <span></span>
+            </div>
+            <input type="submit" value="Sign Up">
+            {!! Form::close() !!}
+
             <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
                 <li><a href="#" class="facebook">
                         <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
@@ -53,7 +59,7 @@
 
         </div>
         <div class="col-md-4 modal_body_right modal_body_right1">
-            <img src="{{asset('public/web')}}/images/log_pic.jpg" alt=" " />
+            <img src="{{asset('/web')}}/images/log_pic.jpg" alt=" " />
         </div>
         <div class="clearfix"></div>
     </div>

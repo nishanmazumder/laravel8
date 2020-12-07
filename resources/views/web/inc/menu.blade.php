@@ -5,6 +5,14 @@
                         aria-hidden="true"></i> Sign In </a></li>
             <li> <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o"
                         aria-hidden="true"></i> Sign Up </a></li>
+            <li class="menu__item dropdown">
+                <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Short
+                    Codes <b class="caret"></b></a>
+                <ul class="dropdown-menu agile_short_dropdown">
+                    <li><a href="icons.html">Web Icons</a></li>
+                    <li><a href="typography.html">Typography</a></li>
+                </ul>
+            </li>
             <li><i class="fa fa-phone" aria-hidden="true"></i> Call : 01234567898</li>
             <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a
                     href="mailto:info@example.com">info@example.com</a></li>
@@ -24,7 +32,7 @@
         </div>
         <!-- header-bot -->
         <div class="col-md-4 logo_agile">
-        <h1><a href="{{url('/')}}"><span>E</span>lite Shoppy <i class="fa fa-shopping-bag top_logo_agile_bag"
+            <h1><a href="{{url('/')}}"><span>E</span>lite Shoppy <i class="fa fa-shopping-bag top_logo_agile_bag"
                         aria-hidden="true"></i></a></h1>
         </div>
         <!-- header-bot -->
@@ -76,7 +84,7 @@
                     <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav menu__list">
                             <li class="active menu__item menu__item--current"><a class="menu__link"
-                            href="{{url('/')}}">Home <span class="sr-only">(current)</span></a></li>
+                                    href="{{url('/')}}">Home <span class="sr-only">(current)</span></a></li>
                             <li class=" menu__item"><a class="menu__link" href="about.html">About</a></li>
                             <li class="dropdown menu__item">
                                 <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button"
@@ -139,7 +147,7 @@
         </div>
         <div class="top_nav_right">
             <div class="wthreecartaits wthreecartaits2 cart cart box_1">
-            <form action="{{url('product-cart')}}" method="GET" class="">
+                <form action="{{url('product-cart')}}" method="GET" class="">
                     <button class="w3view-cart" type="submit" name="" value=""><i class="fa fa-cart-arrow-down"
                             aria-hidden="true"></i></button>
                     <span class="nm-cart-count"></span>

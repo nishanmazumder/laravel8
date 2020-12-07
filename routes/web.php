@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +32,12 @@ Route::get('cart-delete/{id}', [HomeController::class, 'cartDelete']);
 Route::get('cart-empty', [HomeController::class, 'cartEmpty']);
 
 //Order
-Route::get('login-user', [HomeController::class, 'login']);
-Route::get('register-user', [HomeController::class, 'register']);
+Route::get('login/customer', [CustomerController::class, 'login']);
+Route::get('register/customer', [CustomerController::class, 'register']);
+Route::post('customer/add', [CustomerController::class, 'registerCustomer']);
+
+//MailTest
+Route::get('sendmail', [CustomerController::class, 'sendmail']);
 
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 
