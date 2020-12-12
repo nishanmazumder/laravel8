@@ -239,7 +239,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{asset('../node_modules/toastr/build/toastr.min.js')}}"></script>
     <script>
         $(document).ready(function () {
-            $(".nm-cart-count").html(0);
+            $(".nmCartCount").html(0);
             $(".nm-btn-text").on('click', addToCart);
 
             function addToCart(e) {
@@ -267,7 +267,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 // sessionStorage.setItem('qty', data.quantity);
                 // var qty = sessionStorage.getItem('qty');
                 //console.log(qty);
-                $(".nm-cart-count").html(data.quantity);
+                $(".nmCartCount").html(data.quantity);
             }
 
             // //Form

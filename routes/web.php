@@ -7,6 +7,9 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\PaymentController;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +24,14 @@ use App\Http\Controllers\CustomerController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
+
+//Customer
+Route::get('login/customer', [CustomerController::class, 'login']);
+Route::post('register/customer', [CustomerController::class, 'register']);
+
+
+
+//Product
 Route::get('product-category/{id}', [HomeController::class, 'productCategoryPage']);
 Route::get('product-single/{id}/{name}', [HomeController::class, 'productSinglrPage']);
 
@@ -32,16 +43,27 @@ Route::get('cart-delete/{id}', [HomeController::class, 'cartDelete']);
 Route::get('cart-empty', [HomeController::class, 'cartEmpty']);
 
 //Order
-Route::get('login/customer', [CustomerController::class, 'login']);
-Route::get('register/customer', [CustomerController::class, 'register']);
+
+Route::get('login/customer/billing', [CustomerController::class, 'loginBilling']);
+Route::get('login/customer/verify', [CustomerController::class, 'loginCustomer']);
+Route::get('register/customer/billing', [CustomerController::class, 'registerBilling']);
 Route::post('customer/add', [CustomerController::class, 'registerCustomer']);
+Route::get('customer/logout', [CustomerController::class, 'customerLogout']);
+
+
+
+Route::get('customer/billing', [ShippingController::class, 'billingDetails']);
+Route::post('customer/billing/save/{id}', [ShippingController::class, 'billingsave']);
+
+Route::get('customer/payment', [PaymentController::class, 'customerPayment']);
+Route::post('customer/payment/confirm', [PaymentController::class, 'paymentConfirm']);
 
 //MailTest
 Route::get('sendmail', [CustomerController::class, 'sendmail']);
 
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     //Product
@@ -58,5 +80,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::resource('brand', BrandController::class)->except(['show']);
     Route::get('brand-unpublish/{id}', [BrandController::class, 'unpublish']);
     Route::get('brand-publish/{id}', [BrandController::class, 'publish']);
-
 });

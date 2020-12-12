@@ -50,7 +50,8 @@
                                 </a>
                             </td>
                             <td>{{$row->name}}</td>
-                            <td><img src="{{asset('/uploads')}}{{'/'.$row->attributes['image']}}" alt="{{$row->name}}" style="width: 30px"></td>
+                            <td><img src="{{asset('/uploads')}}{{'/'.$row->attributes['image']}}" alt="{{$row->name}}"
+                                    style="width: 30px"></td>
                             <td>
                                 {!! Form::open(['url'=>'cart-update', 'method'=>'POST', 'class'=> 'form-inline']) !!}
                                 <input type="hidden" name="rowId" id="" value="{{$row->id}}">
@@ -67,7 +68,7 @@
                 </table>
             </div>
             <div class="col-md-4">
-            <a href="{{url('cart-empty')}}" class="btn nm-btn">Remove All</a>
+                <a href="{{url('cart-empty')}}" class="btn nm-btn">Remove All</a>
             </div>
             <div class="col-md-4" style="float: right">
                 <table class="table text-center" style="border: 1px solid #ddd">
@@ -89,9 +90,17 @@
                     </tbody>
 
                 </table>
-            <a href="{{url('login')}}" class="nm-btn nm-cart-btn nm-btn-cart-page">
+
+                @if (Session::get('customerId'))
+                <a href="{{url('customer/billing')}}" class="nm-btn nm-cart-btn nm-btn-cart-page">
                     Order Now
                 </a>
+                @else
+                <a href="{{url('login/customer')}}" class="nm-btn nm-cart-btn nm-btn-cart-page"> Order Now
+                </a>
+                @endif
+
+
             </div>
             @endif
         </div>

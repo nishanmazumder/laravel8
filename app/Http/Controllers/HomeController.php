@@ -66,7 +66,7 @@ class HomeController extends Controller
 
         $itemQuantity = \Cart::getTotalQuantity();
 
-        //$request->session()->put('test', $itemQuantity);
+        Session::put('quantity', $itemQuantity);
 
         return response()->json(['success' => 'Added to cart', 'quantity' => $itemQuantity]);
     }
@@ -76,6 +76,8 @@ class HomeController extends Controller
         $items = \Cart::getContent();
         $total = \Cart::getTotal();
         $CartEmpty = \Cart::isEmpty();
+
+        Session::put('total', $total);
 
         return view('web.pages.product.product-cart', compact('items', 'total', 'CartEmpty'));
     }

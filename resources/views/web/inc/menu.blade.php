@@ -1,18 +1,27 @@
 <div class="header" id="home">
     <div class="container">
         <ul>
+            @if (Session::get('customerName'))
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Hello {{Session::get('customerName')}}
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                    <div style="background: #000" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{url('customer/logout')}}">Logout</a>
+                    </div>
+                </div>
+
+            </li>
+            @else
             <li> <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt"
                         aria-hidden="true"></i> Sign In </a></li>
             <li> <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o"
                         aria-hidden="true"></i> Sign Up </a></li>
-            <li class="menu__item dropdown">
-                <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Short
-                    Codes <b class="caret"></b></a>
-                <ul class="dropdown-menu agile_short_dropdown">
-                    <li><a href="icons.html">Web Icons</a></li>
-                    <li><a href="typography.html">Typography</a></li>
-                </ul>
-            </li>
+            @endif
+
             <li><i class="fa fa-phone" aria-hidden="true"></i> Call : 01234567898</li>
             <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a
                     href="mailto:info@example.com">info@example.com</a></li>
@@ -150,7 +159,7 @@
                 <form action="{{url('product-cart')}}" method="GET" class="">
                     <button class="w3view-cart" type="submit" name="" value=""><i class="fa fa-cart-arrow-down"
                             aria-hidden="true"></i></button>
-                    <span class="nm-cart-count"></span>
+                    <span class="nmCartCount nm-cart-count"></span>
 
                 </form>
 
@@ -171,19 +180,21 @@
             <div class="modal-body modal-body-sub_agile">
                 <div class="col-md-8 modal_body_left modal_body_left1">
                     <h3 class="agileinfo_sign">Sign In <span>Now</span></h3>
-                    <form action="#" method="post">
-                        <div class="styled-input agile-styled-input-top">
-                            <input type="text" name="Name" required="">
-                            <label>Name</label>
-                            <span></span>
-                        </div>
-                        <div class="styled-input">
-                            <input type="email" name="Email" required="">
-                            <label>Email</label>
-                            <span></span>
-                        </div>
-                        <input type="submit" value="Sign In">
-                    </form>
+                    <small class="text-danger">{{Session::get('message')}}</small>
+                    {!! Form::open(['url' => 'login/customer', 'method' => 'GET']) !!}
+                    <div class="styled-input">
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                        <span></span>
+                        <small class="text-danger">{{$errors->has('email')?$errors->first('email'):''}}</small>
+                    </div>
+                    <div class="styled-input">
+                        <input type="password" name="password" required>
+                        <label>Password</label>
+                        <span></span>
+                    </div>
+                    <input type="submit" value="Sign In">
+                    {!! Form::close() !!}
                     <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
                         <li><a href="#" class="facebook">
                                 <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
@@ -227,29 +238,40 @@
             <div class="modal-body modal-body-sub_agile">
                 <div class="col-md-8 modal_body_left modal_body_left1">
                     <h3 class="agileinfo_sign">Sign Up <span>Now</span></h3>
-                    <form action="#" method="post">
-                        <div class="styled-input agile-styled-input-top">
-                            <input type="text" name="Name" required="">
-                            <label>Name</label>
-                            <span></span>
-                        </div>
-                        <div class="styled-input">
-                            <input type="email" name="Email" required="">
-                            <label>Email</label>
-                            <span></span>
-                        </div>
-                        <div class="styled-input">
-                            <input type="password" name="password" required="">
-                            <label>Password</label>
-                            <span></span>
-                        </div>
-                        <div class="styled-input">
-                            <input type="password" name="Confirm Password" required="">
-                            <label>Confirm Password</label>
-                            <span></span>
-                        </div>
-                        <input type="submit" value="Sign Up">
-                    </form>
+                    <small class="text-danger">{{Session::get('messageReg')}}</small>
+                    {!! Form::open(['url' => 'register/customer', 'method' => 'POST']) !!}
+                    <div class="styled-input agile-styled-input-top">
+                        <input type="text" name="name" required>
+                        <label>Name</label>
+                        <span></span>
+                        <small class="text-danger">{{$errors->has('name')?$errors->first('name'):''}}</small>
+                    </div>
+                    <div class="styled-input">
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                        <span></span>
+                        <small class="text-danger">{{$errors->has('email')?$errors->first('email'):''}}</small>
+                    </div>
+                    <div class="styled-input">
+                        <input type="password" name="password" required>
+                        <label>Password</label>
+                        <span></span>
+                        <small class="text-danger">{{$errors->has('password')?$errors->first('password'):''}}</small>
+                    </div>
+                    <div class="styled-input agile-styled-input-top">
+                        <input type="text" name="phone" required>
+                        <label>Phone</label>
+                        <span></span>
+                        <small class="text-danger">{{$errors->has('phone')?$errors->first('phone'):''}}</small>
+                    </div>
+                    <div class="styled-input agile-styled-input-top">
+                        <input type="text" name="address" required>
+                        <label>Address</label>
+                        <small class="text-danger">{{$errors->has('address')?$errors->first('address'):''}}</small>
+                        <span></span>
+                    </div>
+                    <input type="submit" value="Sign Up">
+                    {!! Form::close() !!}
                     <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
                         <li><a href="#" class="facebook">
                                 <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>

@@ -1,27 +1,36 @@
 @extends('web.master')
 
 @section('content')
-{{-- LOGIN --}}
 <div class="container">
     <!-- Modal1 -->
     <div class="modal-body modal-body-sub_agile nm-sing-in">
         <div class="col-md-8 modal_body_left modal_body_left1">
-            <h3 class="agileinfo_sign">Sign In <span>Now</span></h3>
-            <small class="text-danger">{{Session::get('message')}}</small>
-            {!! Form::open(['url' => 'login/customer/verify', 'method' => 'GET']) !!}
+            <h3 class="agileinfo_sign">Billing <span>Info</span></h3>
+            {{-- Register --}}
+            {!! Form::open(['url' => 'customer/billing/save/'.$customer->id.'', 'method' => 'POST']) !!}
+            <div class="styled-input agile-styled-input-top">
+            <input type="text" name="name" value="{{$customer->name}}" required>
+                <label>Name</label>
+                <span></span>
+            </div>
             <div class="styled-input">
-                <input type="email" name="email" required>
+                <input type="email" name="email" value="{{$customer->email}}" required>
                 <label>Email</label>
                 <span></span>
-                <small class="text-danger">{{$errors->has('email')?$errors->first('email'):''}}</small>
             </div>
-            <div class="styled-input">
-                <input type="password" name="password" required>
-                <label>Password</label>
+            <div class="styled-input agile-styled-input-top">
+                <input type="text" name="phone" value="{{$customer->phone}}" required>
+                <label>Phone</label>
                 <span></span>
             </div>
-            <input type="submit" value="Sign In">
+            <div class="styled-input agile-styled-input-top">
+                <input type="text" name="address" value="{{$customer->address}}" required>
+                <label>Address</label>
+                <span></span>
+            </div>
+            <input type="submit" value="Continue">
             {!! Form::close() !!}
+
             <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
                 <li><a href="#" class="facebook">
                         <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
@@ -41,8 +50,6 @@
                     </a></li>
             </ul>
             <div class="clearfix"></div>
-            <p><a href="{{url('register/customer/billing')}}"> Don't have an account?</a>
-            </p>
 
         </div>
         <div class="col-md-4 modal_body_right modal_body_right1">
