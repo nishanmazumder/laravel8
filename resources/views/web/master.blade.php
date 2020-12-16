@@ -22,7 +22,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-
     </script>
     <!--//tags -->
     <link href="{{asset('web/css/font-awesome.css')}}" rel="stylesheet">
@@ -91,7 +90,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         if (~window.location.search.indexOf('reset=true')) {
             paypal.minicart.reset();
         }
-
     </script>
 
     <!-- //cart-js -->
@@ -111,7 +109,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 "values", 1));
 
         }); //]]>
-
     </script>
     <script type="text/javascript" src="{{asset('web/js/jquery-ui.js')}}"></script>
     <script src="{{asset('web/js/imagezoom.js')}}"></script>
@@ -138,7 +135,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 fit: true
             });
         });
-
     </script>
     <!-- //script for responsive tabs -->
     <script src="{{asset('web/js/jquery.flexslider.js')}}"></script>
@@ -150,14 +146,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 controlNav: "thumbnails"
             });
         });
-
     </script>
     <!-- stats -->
     <script src="{{asset('web/js/jquery.waypoints.min.js')}}"></script>
     <script src="{{asset('web/js/jquery.countup.js')}}"></script>
     <script>
         $('.counter').countUp();
-
     </script>
     <!-- //stats -->
     <!-- start-smoth-scrolling -->
@@ -172,7 +166,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 }, 1000);
             });
         });
-
     </script>
     <!-- here stars scrolling icon -->
     <script type="text/javascript">
@@ -191,7 +184,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
 
         });
-
     </script>
     <!-- //here ends scrolling icon -->
 
@@ -300,9 +292,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
         });
-
     </script>
+    <script>
+        $("#nmEmail").blur(function () {
+            var mailField = $("#nmEmail").val();
+            $.ajax({
+                url: "{{url('ajax/mail/check')}}/" + mailField,
+                type: "GET",
+                success: function (data) {
+                    $("#nmMailErr").html(data);
 
+                    if(data == "Email already exist"){
+                        $("#nmRegBtn").prop("disabled",true);
+                        $("#nmMailErr").removeClass( "text-success" ).addClass( "text-danger" );
+                    }else{
+                        $("#nmRegBtn").prop("disabled",false);
+                        $("#nmMailErr").removeClass( "text-danger" ).addClass( "text-success" );
+                    }
+                }
+            })    
+        });
+    </script>
 </body>
 
 </html>

@@ -40,4 +40,15 @@ class ShippingController extends Controller
         $shipping->address = $request->address;
         $shipping->save();
     }
+
+    protected function ajaxMailCheck($email){
+        //return $email;
+        $mailCheck = Customer::where('email', $email)->first();
+
+        if($mailCheck){
+            return "Email already exist";
+        }else{
+            return "Available";
+        }
+    }
 }

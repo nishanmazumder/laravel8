@@ -96,7 +96,7 @@
                     Order Now
                 </a>
                 @else
-                <a href="{{url('login/customer')}}" class="nm-btn nm-cart-btn nm-btn-cart-page"> Order Now
+                <a href="{{url('login/customer/billing')}}" class="nm-btn nm-cart-btn nm-btn-cart-page"> Order Now
                 </a>
                 @endif
 

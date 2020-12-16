@@ -27,7 +27,7 @@
                 Product
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Product -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct"
                     aria-expanded="true" aria-controls="collapseProduct">
@@ -36,11 +36,27 @@
                 </a>
                 <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <h6 class="collapse-header">All Product Options</h6>
                         <a class="collapse-item" href="{{url('product')}}">Product</a>
                         <a class="collapse-item" href="{{url('category')}}">Category</a>
                         <a class="collapse-item" href="{{url('brand')}}">Brand</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <!-- Order -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder"
+                    aria-expanded="true" aria-controls="collapseProduct">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Order</span>
+                </a>
+                <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">All Order Options</h6>
+                        <a class="collapse-item" href="{{url('order')}}">Order</a>
                     </div>
                 </div>
             </li>

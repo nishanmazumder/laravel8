@@ -247,10 +247,10 @@
                         <small class="text-danger">{{$errors->has('name')?$errors->first('name'):''}}</small>
                     </div>
                     <div class="styled-input">
-                        <input type="email" name="email" required>
+                        <input type="email" name="email" id="nmEmail" required>
                         <label>Email</label>
                         <span></span>
-                        <small class="text-danger">{{$errors->has('email')?$errors->first('email'):''}}</small>
+                        <small class="text-danger" id="nmMailErr"></small>
                     </div>
                     <div class="styled-input">
                         <input type="password" name="password" required>

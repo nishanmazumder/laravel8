@@ -14,9 +14,10 @@
                 <span></span>
             </div>
             <div class="styled-input">
-                <input type="email" name="email" required>
+                <input type="email" name="email" id="nmEmail" required>
                 <label>Email</label>
                 <span></span>
+                <small class="text-danger" id="nmMailErr"></small>
             </div>
             <div class="styled-input">
                 <input type="password" name="password" required>
@@ -33,7 +34,7 @@
                 <label>Address</label>
                 <span></span>
             </div>
-            <input type="submit" value="Sign Up">
+            <input type="submit" id="nmRegBtn" value="Sign Up">
             {!! Form::close() !!}
 
             <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
@@ -65,13 +66,10 @@
     </div>
     <!-- //Modal1 -->
 
-
-
-
-
-
 </div>
 
 @include('web.pages.home.sections.service')
+
+
 
 @endsection

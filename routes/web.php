@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Session;
 
 /*
@@ -43,7 +44,6 @@ Route::get('cart-delete/{id}', [HomeController::class, 'cartDelete']);
 Route::get('cart-empty', [HomeController::class, 'cartEmpty']);
 
 //Order
-
 Route::get('login/customer/billing', [CustomerController::class, 'loginBilling']);
 Route::get('login/customer/verify', [CustomerController::class, 'loginCustomer']);
 Route::get('register/customer/billing', [CustomerController::class, 'registerBilling']);
@@ -53,6 +53,7 @@ Route::get('customer/logout', [CustomerController::class, 'customerLogout']);
 
 
 Route::get('customer/billing', [ShippingController::class, 'billingDetails']);
+Route::get('ajax/mail/check/{email}', [ShippingController::class, 'ajaxMailCheck']);
 Route::post('customer/billing/save/{id}', [ShippingController::class, 'billingsave']);
 
 Route::get('customer/payment', [PaymentController::class, 'customerPayment']);
@@ -80,4 +81,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('brand', BrandController::class)->except(['show']);
     Route::get('brand-unpublish/{id}', [BrandController::class, 'unpublish']);
     Route::get('brand-publish/{id}', [BrandController::class, 'publish']);
+
+    //Order
+    Route::get('order', [OrderController::class, 'order']);
+    Route::get('order/view/{id}', [OrderController::class, 'orderView']);
+    Route::get('order/invoice/{id}', [OrderController::class, 'pdfView']);
 });
