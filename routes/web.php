@@ -10,7 +10,11 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\TailwindController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +26,9 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Tailwind
+// Route::get('tailwind', [TailwindController::class, 'index']);
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
@@ -64,8 +71,16 @@ Route::get('sendmail', [CustomerController::class, 'sendmail']);
 
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 
+//php -S localhost:8000 -t public
+
+//Auth::routes(['register' => false]);
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('logout', [AdminController::class, 'logout']);
+
+    // Home
+    Route::get('/slider', [AdminController::class, 'slider'])->name('slider');
 
     //Product
     Route::resource('product', ProductController::class)->except(['show']);
@@ -87,3 +102,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('order/view/{id}', [OrderController::class, 'orderView']);
     Route::get('order/invoice/{id}', [OrderController::class, 'pdfView']);
 });
+
+Route::resource('tag', TagController::class);

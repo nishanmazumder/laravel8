@@ -14,12 +14,27 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('dashboard')}}">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Home -->
+            <div class="sidebar-heading">
+                Home Features
+            </div>
+
+            <!-- Slider -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('slider') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Slider</span>
+                </a>
+            </li>
+
             <hr class="sidebar-divider">
 
             <!-- Product -->
@@ -37,9 +52,9 @@
                 <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">All Product Options</h6>
-                        <a class="collapse-item" href="{{url('product')}}">Product</a>
-                        <a class="collapse-item" href="{{url('category')}}">Category</a>
-                        <a class="collapse-item" href="{{url('brand')}}">Brand</a>
+                        <a class="collapse-item" href="{{ url('product') }}">Product</a>
+                        <a class="collapse-item" href="{{ url('category') }}">Category</a>
+                        <a class="collapse-item" href="{{ url('brand') }}">Brand</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
@@ -56,7 +71,7 @@
                 <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">All Order Options</h6>
-                        <a class="collapse-item" href="{{url('order')}}">Order</a>
+                        <a class="collapse-item" href="{{ url('order') }}">Order</a>
                     </div>
                 </div>
             </li>
