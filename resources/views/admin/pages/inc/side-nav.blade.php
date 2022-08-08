@@ -29,7 +29,7 @@
 
             <!-- Slider -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('slider') }}">
+                <a class="nav-link" href="{{ url('slider') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Slider</span>
                 </a>

@@ -33,10 +33,4 @@ class AdminController extends Controller
     return redirect('/login');
 }
 
-public function slider(){
-    return view('admin.pages.admin');
-}
-
-
-
 }

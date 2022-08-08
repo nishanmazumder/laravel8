@@ -1,8 +1,12 @@
 <?php
 
+// Web
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+
+// Admin
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -79,8 +83,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('logout', [AdminController::class, 'logout']);
 
-    // Home
-    Route::get('/slider', [AdminController::class, 'slider'])->name('slider');
+    // Slider
+    Route::resource('slider', SliderController::class)->except(['show']);
+    Route::get('slider-unpublish/{id}', [SliderController::class, 'unpublish']);
+    Route::get('slider-publish/{id}', [SliderController::class, 'publish']);
+
 
     //Product
     Route::resource('product', ProductController::class)->except(['show']);
